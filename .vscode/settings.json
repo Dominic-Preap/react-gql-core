@@ -19,7 +19,12 @@
     "dist": true,
     "node_modules": true
   },
-  "typescriptHero.imports.grouping": ["Plains", "/^react/", "Modules", "Workspace"],
-  "cSpell.words": [],
+  "typescriptHero.imports.grouping": [
+    "Plains",
+    "/^react/",
+    "Modules",
+    "Workspace"
+  ],
+  "cSpell.words": ["mobx"],
   "workbench.iconTheme": "vscode-icons"
 }

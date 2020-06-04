@@ -1,15 +1,15 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 
-import { useRootStore } from 'common/stores';
-import { RoutePath } from 'common/utilities/RoutePath';
+import { useAuthContext } from 'common/stores/xxx';
+import { RoutePath } from 'common/utils/RoutePath';
 
 import { LoginForm } from './Form';
 
 const Login = () => {
-  const store = useRootStore();
+  const auth = useAuthContext();
 
-  if (store.authStore.logged) {
+  if (auth.isAuthenticated) {
     return <Redirect to={RoutePath.dashboard} />;
   }
 

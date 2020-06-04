@@ -4,7 +4,8 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 
 import { client } from 'common/graphql/provider';
-import { RootStoreContext, RootStore } from 'common/stores';
+import { StoreProvider } from 'common/stores';
+import { AuthProvider } from 'common/stores/xxx';
 
 import App from './containers/App';
 import * as serviceWorker from './serviceWorker';
@@ -13,9 +14,11 @@ ReactDOM.render(
   <React.StrictMode>
     <ApolloProvider client={client}>
       <BrowserRouter>
-        <RootStoreContext.Provider value={new RootStore()}>
-          <App />
-        </RootStoreContext.Provider>
+        <AuthProvider>
+          <StoreProvider>
+            <App />
+          </StoreProvider>
+        </AuthProvider>
       </BrowserRouter>
     </ApolloProvider>
   </React.StrictMode>,

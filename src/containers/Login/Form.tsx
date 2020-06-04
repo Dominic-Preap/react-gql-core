@@ -1,51 +1,48 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
 
-import { useRootStore } from 'common/stores';
-import { RoutePath } from 'common/utilities/RoutePath';
-import { useLocalStorage } from 'common/utilities/useLocalStorage';
+import { useAuthContext } from 'common/stores/xxx';
 
 interface LoginModel {
-  email?: string;
-  password?: string;
+  email: string;
+  password: string;
+  loading: boolean;
 }
 
 export const LoginForm = () => {
   const [state, setState] = React.useState<LoginModel>({
     email: '',
     password: '',
+    loading: false,
   });
-  const [, setToken] = useLocalStorage('token', '');
-  const store = useRootStore();
-  const history = useHistory();
 
-  function login() {
-    if (state.email === '1' && state.password === '1') {
-      setToken('xxx');
-      store.authStore.setLogin();
-      history.push(RoutePath.dashboard);
-    } else {
+  const auth = useAuthContext();
+
+  async function login() {
+    setState({ ...state, loading: true });
+    const result = await auth.login(state.email, state.password);
+
+    if (!result) {
       // alert('wrong password');
-      setState({ email: '', password: '' });
+      setState({ email: '', password: '', loading: false });
     }
   }
-
+  const { email, password, loading } = state;
   return (
     <>
       <input
-        value={state.email}
+        value={email}
         name="email"
         onChange={({ target }) => setState({ ...state, email: target.value })}
       />
       <input
-        value={state.password}
+        value={password}
         name="password"
         onChange={({ target }) =>
           setState({ ...state, password: target.value })
         }
       />
       <button type="button" onClick={() => login()}>
-        Login
+        {loading ? 'loading...' : 'Login'}
       </button>
     </>
   );
