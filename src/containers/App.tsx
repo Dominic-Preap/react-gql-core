@@ -1,41 +1,62 @@
-import React from 'react';
-
-import { Switch, Route, Redirect, useHistory } from 'react-router-dom';
-
-import { RoutePath } from 'common/utilities/RoutePath';
-import { PrivateRoute } from 'common/utilities/PrivateRoute';
-import { useAuthStore } from 'common/stores';
 import { useObserver } from 'mobx-react-lite';
+import React from 'react';
+import {
+  Redirect,
+  Route,
+  Switch,
+  useHistory,
+  useLocation,
+} from 'react-router-dom';
+
+import { useRootStore } from 'common/stores';
+import { PrivateRoute } from 'common/utilities/PrivateRoute';
+import { RoutePath } from 'common/utilities/RoutePath';
 import { delay } from 'common/utilities/sleep';
+import { useLocalStorage } from 'common/utilities/useLocalStorage';
 
 const Login = React.lazy(() => import('./Login'));
 const Dashboard = React.lazy(() => import('./Dashboard'));
 const User = React.lazy(() => import('./User'));
 
 function App() {
-  const authStore = useAuthStore();
+  const store = useRootStore();
   const history = useHistory();
+  const location = useLocation();
+  const [token] = useLocalStorage('token', '');
 
   React.useEffect(() => {
     async function fetchData() {
-      await delay(3000);
-      authStore.checkProfile();
-      history.push(RoutePath.login);
+      if (token) {
+        await delay(1000);
+        store.authStore.setLogin();
+        // history.push(location.);
+      } else {
+        store.authStore.setLogout();
+        // history.push(RoutePath.login);
+      }
     }
     fetchData();
-  }, [authStore, history]);
+  }, [store, history, token, location]);
 
   return useObserver(() => {
-    if (authStore.loading) return <div>loading</div>;
+    if (store.authStore.loading) return <div>loading</div>;
 
     return (
       <div>
         <React.Suspense fallback={<div>Loading...</div>}>
           <Switch>
             <Route path={RoutePath.login} component={Login} />
-            <PrivateRoute authenticated={authStore.logged} path={RoutePath.dashboard} component={Dashboard} />
-            <PrivateRoute authenticated={authStore.logged} path={RoutePath.users} component={User} />
-            <Redirect from={RoutePath.login} to={RoutePath.login} />
+            <PrivateRoute
+              authenticated={store.authStore.getLogged()}
+              path={RoutePath.dashboard}
+              component={Dashboard}
+            />
+            <PrivateRoute
+              authenticated={store.authStore.getLogged()}
+              path={RoutePath.users}
+              component={User}
+            />
+            <Redirect to={RoutePath.login} />
           </Switch>
         </React.Suspense>
       </div>

@@ -1,11 +1,10 @@
+import { ApolloProvider } from '@apollo/react-hooks';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 
-import { ApolloProvider } from '@apollo/react-hooks';
 import { client } from 'common/graphql/provider';
-import { StoreProvider } from 'common/stores';
-import AuthStore from 'common/stores/AuthStore';
+import { RootStoreContext, RootStore } from 'common/stores';
 
 import App from './containers/App';
 import * as serviceWorker from './serviceWorker';
@@ -14,9 +13,9 @@ ReactDOM.render(
   <React.StrictMode>
     <ApolloProvider client={client}>
       <BrowserRouter>
-        <StoreProvider value={new AuthStore()}>
+        <RootStoreContext.Provider value={new RootStore()}>
           <App />
-        </StoreProvider>
+        </RootStoreContext.Provider>
       </BrowserRouter>
     </ApolloProvider>
   </React.StrictMode>,

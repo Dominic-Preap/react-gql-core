@@ -1,6 +1,5 @@
-import ApolloClient from "apollo-boost";
-
+import ApolloClient from 'apollo-boost';
 
 export const client = new ApolloClient({
-    uri: 'https://rickandmortyapi.com/graphql/', //URL of the GraphQL server
-  });
+  uri: 'https://rickandmortyapi.com/graphql/', // URL of the GraphQL server
+});

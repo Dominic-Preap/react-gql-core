@@ -1,26 +1,22 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 
-import { useAuthStore } from 'common/stores';
-import { useHistory } from 'react-router-dom';
+import { useRootStore } from 'common/stores';
 import { RoutePath } from 'common/utilities/RoutePath';
 
+import { LoginForm } from './Form';
+
 const Login = () => {
-  const authStore = useAuthStore();
-  const history = useHistory();
+  const store = useRootStore();
 
-  if (authStore.logged) {
-    history.push(RoutePath.dashboard);
-  }
-
-  function login() {
-    authStore.updateProfile(true);
-    history.push(RoutePath.dashboard);
+  if (store.authStore.logged) {
+    return <Redirect to={RoutePath.dashboard} />;
   }
 
   return (
     <div>
       <h1>Login</h1>
-      <button onClick={() => login()}>Login</button>
+      <LoginForm />
     </div>
   );
 };

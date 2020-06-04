@@ -1,3 +1,4 @@
+import gql from 'graphql-tag';
 export type Maybe<T> = T | null;
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
@@ -26,27 +27,33 @@ export type Query = {
   episodes?: Maybe<Episodes>;
 };
 
+
 export type QueryCharacterArgs = {
   id?: Maybe<Scalars['ID']>;
 };
+
 
 export type QueryCharactersArgs = {
   page?: Maybe<Scalars['Int']>;
   filter?: Maybe<FilterCharacter>;
 };
 
+
 export type QueryLocationArgs = {
   id?: Maybe<Scalars['ID']>;
 };
+
 
 export type QueryLocationsArgs = {
   page?: Maybe<Scalars['Int']>;
   filter?: Maybe<FilterLocation>;
 };
 
+
 export type QueryEpisodeArgs = {
   id?: Maybe<Scalars['ID']>;
 };
+
 
 export type QueryEpisodesArgs = {
   page?: Maybe<Scalars['Int']>;
@@ -165,5 +172,8 @@ export type Episodes = {
 
 export enum CacheControlScope {
   Public = 'PUBLIC',
-  Private = 'PRIVATE',
+  Private = 'PRIVATE'
 }
+
+
+

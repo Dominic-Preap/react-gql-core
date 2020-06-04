@@ -1,8 +1,7 @@
-import { useContext, createContext } from 'react';
-import AuthStore from './AuthStore';
+import React from 'react';
 
+import RootStore from './RootStore';
 
-export const StoreContext = createContext<AuthStore>({} as AuthStore);
-export const StoreProvider = StoreContext.Provider;
-
-export const useAuthStore = (): AuthStore => useContext(StoreContext);
+export const RootStoreContext = React.createContext<RootStore>({} as RootStore);
+export const useRootStore = () => React.useContext(RootStoreContext);
+export { RootStore };

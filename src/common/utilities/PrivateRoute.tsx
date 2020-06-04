@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Redirect, Route, RouteProps } from 'react-router-dom';
+
 import { RoutePath } from './RoutePath';
 
 // import { RoutePath } from '@common/utils';
@@ -15,16 +16,19 @@ interface Props extends RouteProps {
  * @see https://tylermcginnis.com/react-router-protected-routes-authentication/
  */
 export function PrivateRoute({ component, authenticated, ...rest }: Props) {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const Component = component as any;
   return (
     <Route
       {...rest}
-      render={props =>
+      render={(props) =>
         authenticated === true ? (
           <Component {...props} />
         ) : (
           // TODO: Change default pathname if needed.
-          <Redirect to={{ pathname: RoutePath.login, state: { from: props.location } }} />
+          <Redirect
+            to={{ pathname: RoutePath.login, state: { from: props.location } }}
+          />
         )
       }
     />

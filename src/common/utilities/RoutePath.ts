@@ -2,7 +2,7 @@ export const RoutePath = {
   login: '/login',
   dashboard: '/dashboard',
   products: '/products',
-  users: '/users'
+  users: '/users',
 
   // ---------------------------------------------
   // tslint:disable-next-line:max-line-length

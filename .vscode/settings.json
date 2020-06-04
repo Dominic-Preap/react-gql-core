@@ -1,4 +1,13 @@
 {
+  "files.associations": {
+    "*.jsx": "javascriptreact"
+  },
+  "editor.insertSpaces": true,
+  "editor.detectIndentation": false,
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
   "typescript.tsdk": "node_modules\\typescript\\lib",
   "files.exclude": {
     "**/.DS_Store": true,
@@ -10,12 +19,7 @@
     "dist": true,
     "node_modules": true
   },
-  "typescriptHero.imports.grouping": [
-    "Plains",
-    "/^react/",
-    "Modules",
-    "Workspace"
-  ],
+  "typescriptHero.imports.grouping": ["Plains", "/^react/", "Modules", "Workspace"],
   "cSpell.words": [],
   "workbench.iconTheme": "vscode-icons"
 }
