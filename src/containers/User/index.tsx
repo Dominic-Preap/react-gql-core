@@ -1,23 +1,9 @@
-import { useQuery } from '@apollo/react-hooks';
-import { gql } from 'apollo-boost';
 import React from 'react';
 
-import { Characters } from 'common/graphql/generates';
-
-const GET_CHARACTERS = gql`
-  query getCharacters {
-    characters {
-      results {
-        id
-        name
-        image
-      }
-    }
-  }
-`;
+import { useGetCharactersQuery } from 'common/graphql/generates';
 
 const User = () => {
-  const { loading, error, data } = useQuery<Characters>(GET_CHARACTERS);
+  const { loading, error, data } = useGetCharactersQuery();
   if (error) {
     return <div>Error</div>;
   }
@@ -29,10 +15,10 @@ const User = () => {
       </div>
     );
   }
-  if (data?.results?.length) {
+  if (data?.characters?.results?.length) {
     return (
       <div className="characters">
-        {data.results.map((x) => (
+        {data?.characters?.results.map((x) => (
           <div key={x!.name!} className="character">
             <img src={x!.image!} alt={x?.name!} />
             <p>{x?.name}</p>

@@ -1,7 +1,25 @@
-schema: https://rickandmortyapi.com/graphql
+overwrite: true
+schema: ${REACT_APP_GRAPHQL_URL}
+hooks:
+  afterAllFileWrite:
+    - prettier --write
 generates:
-  ./src/graphql/generates.tsx:
+  ./src/common/graphql/generates.tsx:
+    documents: 'src/**/*.gql'
     plugins:
+      - add: '// eslint:disable'
       - typescript
       - typescript-operations
       - typescript-react-apollo
+    config:
+      typesPrefix: I
+      declarationKind: 'interface'
+      reactApolloVersion: 3
+      apolloReactHooksImportFrom: '@apollo/react-hooks'
+      apolloReactCommonImportFrom: '@apollo/react-hooks'
+      withComponent: false
+      withHOC: false
+      withHooks: true
+      withMutationFn: false
+      withMutationOptionsType: false
+      withResultType: false
