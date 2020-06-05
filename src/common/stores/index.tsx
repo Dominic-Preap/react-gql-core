@@ -28,5 +28,4 @@ export const useStore = () => {
   return store;
 };
 
-export const useCharacterStore = () =>
-  React.useContext(StoreContext).characterStore;
+export const useCharacterStore = () => useStore().characterStore;

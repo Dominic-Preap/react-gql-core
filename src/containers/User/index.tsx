@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { useGetCharactersQuery } from 'common/graphql/generates';
+import { useGetCharactersQuery } from 'common/graphql';
 import { useCharacterStore } from 'common/stores';
 
 import SelectCharacter from './components/SelectCharacter';

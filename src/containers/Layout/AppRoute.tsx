@@ -1,9 +1,8 @@
 import React from 'react';
 import { RouteProps, Switch, Redirect } from 'react-router-dom';
 
-import { useAuthContext } from 'common/stores/xxx';
-import { PrivateRoute } from 'common/utils/PrivateRoute';
-import { RoutePath } from 'common/utils/RoutePath';
+import { useAuthContext } from 'common/context';
+import { PrivateRoute, RoutePath } from 'common/utils';
 
 const routes: RouteProps[] = [
   {

@@ -13,6 +13,7 @@
     }
   },
   "rules": {
+    "react/jsx-indent": "off",
     "react/jsx-curly-newline": "off",
     "react/jsx-key": "error",
     "react/jsx-props-no-spreading": "off",
@@ -46,6 +47,7 @@
           "**/*.test.jsx",
           "**/*.test.ts",
           "**/*.test.tsx",
+          "**/*.stories.tsx",
           "src/tests/**/*"
         ]
       }

@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { useAuthContext } from 'common/stores/xxx';
-import { RoutePath } from 'common/utils/RoutePath';
+import { useAuthContext } from 'common/context';
+import { RoutePath } from 'common/utils';
 
 const SideNav = () => {
   const auth = useAuthContext();

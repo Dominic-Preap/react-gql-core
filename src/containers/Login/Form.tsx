@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { useAuthContext } from 'common/stores/xxx';
+import { useAuthContext } from 'common/context';
 
 interface LoginModel {
   email: string;

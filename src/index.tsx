@@ -3,9 +3,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 
-import { client } from 'common/graphql/provider';
+import { AuthProvider } from 'common/context';
+import { client } from 'common/graphql';
 import { StoreProvider } from 'common/stores';
-import { AuthProvider } from 'common/stores/xxx';
 
 import App from './containers/App';
 import * as serviceWorker from './serviceWorker';

@@ -2,9 +2,8 @@ import 'mobx-react-lite/batchingForReactDom';
 import React from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 
-import { useAuthContext } from 'common/stores/xxx';
-import { PrivateRoute } from 'common/utils/PrivateRoute';
-import { RoutePath } from 'common/utils/RoutePath';
+import { useAuthContext } from 'common/context';
+import { PrivateRoute, RoutePath } from 'common/utils';
 
 const Login = React.lazy(() => import('./Login'));
 const Layout = React.lazy(() => import('./Layout'));

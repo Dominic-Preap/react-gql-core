@@ -13,11 +13,9 @@
     "kumar-harsh.graphql-for-vscode",
     "mgmcdermott.vscode-language-babel",
     "mikestead.dotenv",
-    "Prisma.vscode-graphql",
     "streetsidesoftware.code-spell-checker",
     "Tyriar.sort-lines",
     "vscode-icons-team.vscode-icons",
-    "wayou.vscode-todo-highlight",
-    "xabikos.JavaScriptSnippets"
+    "wayou.vscode-todo-highlight"
   ]
 }

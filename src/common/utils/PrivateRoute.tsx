@@ -3,8 +3,6 @@ import { Redirect, Route, RouteProps } from 'react-router-dom';
 
 import { RoutePath } from './RoutePath';
 
-// import { RoutePath } from '@common/utils';
-
 interface Props extends RouteProps {
   authenticated: boolean;
 }
