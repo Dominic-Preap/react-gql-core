@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { useAuthContext } from 'common/context';
+import { Button } from 'components/Button';
 
 interface LoginModel {
   email: string;
@@ -32,18 +33,20 @@ export const LoginForm = () => {
       <input
         value={email}
         name="email"
+        aria-label="email"
         onChange={({ target }) => setState({ ...state, email: target.value })}
       />
       <input
         value={password}
         name="password"
+        aria-label="password"
         onChange={({ target }) =>
           setState({ ...state, password: target.value })
         }
       />
-      <button type="button" onClick={() => login()}>
+      <Button color="primary" onClick={() => login()}>
         {loading ? 'loading...' : 'Login'}
-      </button>
+      </Button>
     </>
   );
 };

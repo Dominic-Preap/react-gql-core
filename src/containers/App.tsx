@@ -5,7 +5,7 @@ import { Redirect, Route, Switch } from 'react-router-dom';
 import { useAuthContext } from 'common/context';
 import { PrivateRoute, RoutePath } from 'common/utils';
 
-const Login = React.lazy(() => import('./Login'));
+const Login = React.lazy(() => import('./Login/Login'));
 const Layout = React.lazy(() => import('./Layout'));
 
 function App() {

@@ -6,7 +6,8 @@ import { PrivateRoute, RoutePath } from 'common/utils';
 
 const routes: RouteProps[] = [
   {
-    path: RoutePath.dashboard,
+    path: [RoutePath.dashboard, '/'],
+    exact: true,
     component: React.lazy(() => import('../Dashboard')),
   },
   {
