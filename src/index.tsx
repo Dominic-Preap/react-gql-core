@@ -12,7 +12,7 @@ import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
-    <ApolloProvider client={client}>
+    <ApolloProvider client={client as any}>
       <BrowserRouter>
         <AuthProvider>
           <StoreProvider>
